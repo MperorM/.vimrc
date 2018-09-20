@@ -11,7 +11,7 @@ Plugin 'tpope/vim-fugitive'
 "filesystem
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'kien/ctrlp.vim' 
+Plugin 'kien/ctrlp.vim'
 
 "html
 "  isnowfy only compatible with python not python3
@@ -21,14 +21,14 @@ Plugin 'suan/vim-instant-markdown'
 Plugin 'nelstrom/vim-markdown-preview'
 "python sytax checker
 Plugin 'nvie/vim-flake8'
-Plugin 'vim-scripts/Pydiction'
+"Plugin 'vim-scripts/Pydiction'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/syntastic'
 
 "auto-completion stuff
 "Plugin 'klen/python-mode'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'klen/rope-vim'
+"Plugin 'klen/rope-vim'
 "Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 ""code folding
@@ -48,6 +48,8 @@ let g:SimpylFold_docstring_preview = 1
 
 "autocomplete
 let g:ycm_autoclose_preview_window_after_completion=1
+
+let g:ycm_python_binary_path = '/usr/bin/python3.7'
 
 "custom keys
 let mapleader=" "
@@ -128,6 +130,9 @@ nnoremap <space> za
 "js stuff"
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
+"c stuff"
+autocmd FileType c setlocal shiftwidth=2 tabstop=2
+
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -137,11 +142,17 @@ set expandtab
 noremap! <C-BS> <C-w>
 noremap! <C-h> <C-w>
 
-" for command mode
-nnoremap <S-Tab> <<
-" for insert mode
-inoremap <S-Tab> <C-d>
-
 map <C-n> :NERDTreeToggle<CR>
 
-autocmd FileType .tex setlocal spell spelllang=en_us
+" enabling spellcheck for .tex files
+autocmd FileType tex setlocal spell spelllang=en_us
+
+" shortens delay from 'O' command in modal mode.
+set ttimeoutlen=100
+
+"easily copy and paste to clipboard TODO: not quite working
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
+
+"splits below so function description of youcompleteme is less annoying
+set splitbelow
