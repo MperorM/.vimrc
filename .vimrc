@@ -11,9 +11,7 @@ Plugin 'tpope/vim-fugitive'
 "filesystem
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'kien/ctrlp.vim'
-
-"html
+Plugin 'kien/ctrlp.vim' "html
 "  isnowfy only compatible with python not python3
 Plugin 'isnowfy/python-vim-instant-markdown'
 Plugin 'jtratner/vim-flavored-markdown'
@@ -23,7 +21,8 @@ Plugin 'nelstrom/vim-markdown-preview'
 Plugin 'nvie/vim-flake8'
 "Plugin 'vim-scripts/Pydiction'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 
 "auto-completion stuff
 "Plugin 'klen/python-mode'
@@ -38,10 +37,12 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'jnurmine/Zenburn'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" splits
+Plugin 'qpkorr/vim-bufkill'
 
 call vundle#end()
 
-let g:pydiction_location = '/home/user/.vim/bundle/Pydiction/complete-dict'
+"let g:pydiction_location = '/home/user/.vim/bundle/Pydiction/complete-dict'
 
 filetype plugin indent on    " enables filetype detection
 let g:SimpylFold_docstring_preview = 1
@@ -124,7 +125,7 @@ set backspace=indent,eol,start
 "Folding based on indentation:
 autocmd FileType python set foldmethod=indent
 "use space to open folds
-nnoremap <space> za 
+nnoremap <space> za
 "----------Stop python PEP 8 stuff--------------
 
 "js stuff"
@@ -151,8 +152,13 @@ autocmd FileType tex setlocal spell spelllang=en_us
 set ttimeoutlen=100
 
 "easily copy and paste to clipboard TODO: not quite working
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
+:inoremap <C-v> <ESC>"+pa
+:vnoremap <C-c> "+y
+:vnoremap <C-d> "+d
 
 "splits below so function description of youcompleteme is less annoying
 set splitbelow
+
+" hotkeys for quick buffer siwtching
+nnoremap <C-L> :bnext<CR>
+nnoremap <C-H> :bprevious<CR>
